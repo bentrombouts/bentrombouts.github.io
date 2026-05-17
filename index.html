@@ -318,6 +318,8 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    /* Plushie display: show both plushies side-by-side (no carousel) */
+
     .music-card,
     .plush-card {
       border-radius: 32px;
@@ -328,11 +330,20 @@
     }
 
     .music-card img,
+    .music-card img,
     .plush-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       aspect-ratio: 4 / 3;
+    }
+
+    /* Make plushie images slightly smaller and contained */
+    .plush-card img {
+      max-height: 320px;
+      width: auto;
+      margin: 0 auto;
+      object-fit: contain;
     }
 
     .card-body {
@@ -536,18 +547,31 @@
 
     <section id="plushie">
       <div class="section-heading"><h2>Official Plushie</h2></div>
+
       <div class="card-grid">
         <div class="plush-card">
-          <img src="plushie.png" alt="MysicPlus plushie" />
+          <img src="plushie.png" alt="Plus-hie plushie" />
           <div class="card-body">
-            <h3>The plushie you can take home</h3>
+            <h3>Plus-hie</h3>
             <p>This limited plushie brings the MysicPlus world into physical form. A collectible companion for fans who want the vibe to live beyond the speakers.</p>
           </div>
         </div>
+
+        <div class="plush-card">
+          <img src="plushie2.png" alt="Inverted Plus-hie plushie" />
+          <div class="card-body">
+            <h3>Inverted Plus-hie</h3>
+            <p>A mirrored counterpart with inverted colors and unique detailing for collectors seeking something bold and different.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:0.6rem"></div>
+      <div class="card-grid" style="grid-template-columns: 1fr;">
         <div class="music-card">
           <div class="card-body">
             <h3>Plushie features</h3>
-            <p>The plushie is designed with bold neon detail, soft textures, and a visual style that echoes the producer’s signature electric blue energy.</p>
+            <p>The plushies are designed with bold neon detail, soft textures, and a visual style that echoes the producer’s signature electric blue energy.</p>
             <ul class="track-list">
               <li><span class="track-badge">1</span> Unique glow-inspired pattern</li>
               <li><span class="track-badge">2</span> Premium plush fabric</li>
@@ -574,5 +598,6 @@
   <footer class="page-wrap">
     <p>© 2026 MysicPlus. Crafted for immersive music and collectible vibes.</p>
   </footer>
+  
 </body>
 </html>
