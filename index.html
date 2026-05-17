@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MysicPlus Showcase</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #05070f;
+      --surface: rgba(8, 13, 29, 0.92);
+      --surface-soft: rgba(15, 22, 51, 0.88);
+      --text: #eef3ff;
+      --text-muted: #9bb4ff;
+      --accent: #4ae1ff;
+      --accent-strong: #6b9cff;
+      --border: rgba(74, 225, 255, 0.16);
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: radial-gradient(circle at top, rgba(74, 225, 255, 0.14), transparent 28%),
+                  linear-gradient(180deg, #05070f 0%, #04050a 100%);
+      color: var(--text);
+    }
+
+    body {
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page-wrap {
+      width: min(1200px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.5rem 0 4rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(5, 7, 15, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.25s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      padding: 3.25rem 0 2rem;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+    }
+
+    .hero-copy p.overline {
+      margin: 0 0 1rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(3rem, 4vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-copy h1 span {
+      color: var(--accent);
+    }
+
+    .hero-copy p {
+      margin: 1.6rem 0 2rem;
+      max-width: 44rem;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .button,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border-radius: 999px;
+      padding: 0 1.7rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .button {
+      background: linear-gradient(135deg, var(--accent), #5a74ff);
+      color: #060811;
+      box-shadow: 0 18px 38px rgba(74, 225, 255, 0.2);
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .button:hover,
+    .button-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 45px rgba(74, 225, 255, 0.22);
+    }
+
+    .hero-image {
+      position: relative;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      border-radius: 36px;
+      background: radial-gradient(circle at top left, rgba(74, 225, 255, 0.18), transparent 35%),
+                  linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 36px;
+      background: linear-gradient(180deg, rgba(74, 225, 255, 0.2), transparent 40%);
+      pointer-events: none;
+    }
+
+    .profile-glow {
+      position: relative;
+      width: min(460px, 100%);
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+      background: rgba(5, 7, 15, 0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .profile-glow img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .feature-grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 2.75rem;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.45rem;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .feature-card h3 {
+      margin: 0 0 0.7rem;
+      font-size: 1.05rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.97rem;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.95rem;
+      margin-bottom: 1.65rem;
+    }
+
+    .section-heading::before {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.85rem, 2.2vw, 2.4rem);
+      letter-spacing: -0.03em;
+    }
+
+    .bio-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .bio-card {
+      padding: 2rem;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .bio-card h3 {
+      margin-top: 0;
+    }
+
+    .bio-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .stat {
+      padding: 1.2rem;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .stat span {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .music-card,
+    .plush-card {
+      border-radius: 32px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .music-card img,
+    .plush-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-body h3 {
+      margin-top: 0;
+      margin-bottom: 0.9rem;
+      font-size: 1.25rem;
+    }
+
+    .card-body p {
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .track-list {
+      list-style: none;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .track-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .track-badge {
+      width: 2rem;
+      height: 2rem;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(74, 225, 255, 0.12);
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .contact-card {
+      padding: 2rem;
+      border-radius: 32px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .contact-card p {
+      margin: 0;
+      color: var(--text-muted);
+      max-width: 60ch;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .social-pill:hover {
+      transform: translateY(-2px);
+      background: rgba(74, 225, 255, 0.12);
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: rgba(238, 243, 255, 0.6);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .bio-grid,
+      .card-grid,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 0;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-wrap {
+        width: min(100%, calc(100% - 1.5rem));
+      }
+
+      .hero-copy h1 {
+        font-size: 3rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="page-wrap nav-inner">
+      <a class="logo" href="#home">MysicPlus</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#plushie">Plushie</a>
+        <a href="#connect">Connect</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-wrap" id="home">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="overline">Producer | Creator | Plushie Universe</p>
+        <h1>Mysic<span>Plus</span> — sound crafted for neon nights.</h1>
+        <p>From hypnotic synth layers to plushie-inspired visuals, MysicPlus blends cinematic beats with a signature electric blue energy. Discover the latest sounds, the official plushie, and the vibe that makes every track shine.</p>
+        <div class="hero-actions">
+          <a class="button" href="https://suno.com/@mysicplus" target="_blank" rel="noreferrer noopener">Listen Now</a>
+          <a class="button-secondary" href="#plushie">Meet the Plushie</a>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Neon energy</h3>
+            <p>Modern production that sits beautifully across streams, visuals, and live performance.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Character-driven story</h3>
+            <p>Every release connects to MysicPlus’s persona, with plushie design and visual branding at the core.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Visual identity</h3>
+            <p>Blue electric gradients, futuristic motifs, and cinematic motion define the world of MysicPlus.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Fan-first drops</h3>
+            <p>Exclusive tracks, plushie merch updates, and new releases are always delivered with premium style.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="profile-glow">
+          <img src="pfp.jpeg" alt="MysicPlus profile" />
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-heading"><h2>About MysicPlus</h2></div>
+      <div class="bio-grid">
+        <article class="bio-card">
+          <h3>Sound design with a playful edge</h3>
+          <p>MysicPlus is a music producer whose soundscape blends powerful club-ready beats with soft, inviting melodies. The brand is anchored by a plushie character that represents warmth, creativity, and modern sonic adventure.</p>
+          <div class="stats">
+            <div class="stat"><strong>12+</strong><span>Tracks released</span></div>
+            <div class="stat"><strong>1M+</strong><span>Monthly listeners</span></div>
+            <div class="stat"><strong>100%</strong><span>Visual-first identity</span></div>
+          </div>
+        </article>
+        <article class="bio-card">
+          <h3>Why the plushie matters</h3>
+          <p>The plushie is the heart of the MysicPlus universe. It brings softness to the electronic energy and creates a memorable brand icon for fans, merch, and live visuals.</p>
+          <p>Perfect for collectors, fans, and anyone who wants the music experience to feel immersive and personal.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="plushie">
+      <div class="section-heading"><h2>Official Plushie</h2></div>
+      <div class="card-grid">
+        <div class="plush-card">
+          <img src="plushie.png" alt="MysicPlus plushie" />
+          <div class="card-body">
+            <h3>The plushie you can take home</h3>
+            <p>This limited plushie brings the MysicPlus world into physical form. A collectible companion for fans who want the vibe to live beyond the speakers.</p>
+          </div>
+        </div>
+        <div class="music-card">
+          <div class="card-body">
+            <h3>Plushie features</h3>
+            <p>The plushie is designed with bold neon detail, soft textures, and a visual style that echoes the producer’s signature electric blue energy.</p>
+            <ul class="track-list">
+              <li><span class="track-badge">1</span> Unique glow-inspired pattern</li>
+              <li><span class="track-badge">2</span> Premium plush fabric</li>
+              <li><span class="track-badge">3</span> Official MysicPlus collectible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="connect">
+      <div class="section-heading"><h2>Connect</h2></div>
+      <div class="contact-card">
+        <p>Stay connected with MysicPlus for new music, plushie drops, and behind-the-scenes creative moments. Follow the electric journey and keep an eye out for the next release.</p>
+        <div class="social-links">
+          <a class="social-pill" href="https://www.youtube.com/@MysicPlusOnYT" target="_blank" rel="noreferrer noopener">YouTube</a>
+          <a class="social-pill" href="https://suno.com/@mysicplus" target="_blank" rel="noreferrer noopener">Suno</a>
+          <a class="social-pill" href="https://discord.gg/Upz5KeEHVx" target="_blank" rel="noreferrer noopener">Discord</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-wrap">
+    <p>© 2026 MysicPlus. Crafted for immersive music and collectible vibes.</p>
+  </footer>
+</body>
+</html>
