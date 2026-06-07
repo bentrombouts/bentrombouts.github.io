@@ -227,6 +227,61 @@
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
     }
 
+    .subscription-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 2rem;
+    }
+
+    .subscription-card {
+      padding: 2rem;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(10, 20, 46, 0.96), rgba(6, 10, 19, 0.98));
+      border: 1px solid rgba(74, 225, 255, 0.18);
+      box-shadow: var(--shadow);
+    }
+
+    .subscription-card h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+
+    .subscription-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .perk-list {
+      list-style: none;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .perk-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 1rem 1.1rem;
+      border-radius: 20px;
+      background: rgba(74, 225, 255, 0.08);
+      border: 1px solid rgba(74, 225, 255, 0.16);
+      color: var(--text);
+    }
+
+    .perk-bullet {
+      width: 2rem;
+      height: 2rem;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(74, 225, 255, 0.22);
+      color: #060811;
+      font-weight: 700;
+    }
+
     .feature-card h3 {
       margin: 0 0 0.7rem;
       font-size: 1.05rem;
@@ -483,6 +538,7 @@
       <a class="logo" href="#home">MysicPlus</a>
       <nav>
         <a href="#about">About</a>
+        <a href="#subscription">Subscription</a>
         <a href="#plushie">Plushie</a>
         <a href="#connect">Connect</a>
       </nav>
@@ -538,10 +594,36 @@
             <div class="stat"><strong>100%</strong><span>Visual-first identity</span></div>
           </div>
         </article>
+
         <article class="bio-card">
           <h3>Why the plushie matters</h3>
           <p>The plushie is the heart of the MysicPlus universe. It brings softness to the electronic energy and creates a memorable brand icon for fans, merch, and live visuals.</p>
           <p>Perfect for collectors, fans, and anyone who wants the music experience to feel immersive and personal.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="subscription">
+      <div class="section-heading"><h2>MysicPlus+</h2></div>
+      <div class="subscription-grid">
+        <article class="subscription-card">
+          <h3>Join the next level</h3>
+          <p>Unlock exclusive perks and become part of the MysicPlus+ circle. This subscription is built for fans who want early music access, input on new ideas, and a deeper connection to the world of MysicPlus.</p>
+          <ul class="perk-list">
+            <li class="perk-item"><span class="perk-bullet">★</span><span>Early access to new songs before anyone else</span></li>
+            <li class="perk-item"><span class="perk-bullet">★</span><span>Send your song ideas in to me and help shape the next release</span></li>
+            <li class="perk-item"><span class="perk-bullet">★</span><span>Behind-the-scenes updates on upcoming tracks and plushie drops</span></li>
+            <li class="perk-item"><span class="perk-bullet">★</span><span>Exclusive MysicPlus+ bonus content and member-only announcements</span></li>
+          </ul>
+          <div class="hero-actions" style="margin-top:1.5rem;">
+            <a class="button" href="#connect">Subscribe Now</a>
+            <a class="button-secondary" href="mailto:contact@mysicplus.com">Ask about perks</a>
+          </div>
+        </article>
+        <article class="subscription-card">
+          <h3>Why MysicPlus+</h3>
+          <p>Everything here is designed to reward the music lovers who want priority access and a voice in what comes next. Become an insider and feel the artist-fan connection in every new drop.</p>
+          <p>Whether you're here for the songs, the story, or the plushie world, MysicPlus+ is the place where fans experience next-level music releases first.</p>
         </article>
       </div>
     </section>
@@ -554,7 +636,7 @@
             <h3>Fresh drops</h3>
             <p>Listen to the newest MysicPlus releases and feel the neon energy with every track.</p>
             <ul class="track-list">
-              <li><span class="track-badge">1</span> <a href="https://suno.com/s/Qabfiu5eUSt0riBx" target="_blank" rel="noreferrer noopener">Revolution</a></li>https://suno.com/s/Qabfiu5eUSt0riBx
+              <li><span class="track-badge">1</span> <a href="https://suno.com/s/Qabfiu5eUSt0riBx" target="_blank" rel="noreferrer noopener">Revolution</a></li>
               <li><span class="track-badge">2</span> <a href="https://suno.com/s/hEbirqAkVepV4ETT" target="_blank" rel="noreferrer noopener">Blind And Alone</a></li>
             </ul>
           </div>
