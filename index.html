@@ -4,7 +4,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MysicPlus Site</title>
+  <title>MysicPlus Site - Season 2</title>
   <style>
     :root {
       color-scheme: dark;
@@ -98,12 +98,111 @@
       color: var(--accent);
     }
 
+    .season2-announcement {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(74, 225, 255, 0.12), rgba(107, 156, 255, 0.06)),
+                  rgba(10, 16, 36, 0.94);
+      border: 1px solid rgba(74, 225, 255, 0.35);
+      padding: 2.25rem;
+      box-shadow: 0 20px 60px rgba(74, 225, 255, 0.15), var(--shadow);
+      overflow: hidden;
+    }
+
+    .season2-announcement::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(74, 225, 255, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .season2-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .season2-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      background: rgba(74, 225, 255, 0.2);
+      border: 1px solid rgba(74, 225, 255, 0.4);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(74, 225, 255, 0.3);
+      animation: pulseGlow 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(74, 225, 255, 0.25); }
+      50% { box-shadow: 0 0 30px rgba(74, 225, 255, 0.6); }
+    }
+
+    .season2-announcement h2 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+      letter-spacing: -0.03em;
+    }
+
+    .season2-announcement h2 span {
+      color: var(--accent);
+    }
+
+    .season2-announcement p {
+      margin: 0 0 1.5rem;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 55ch;
+    }
+
+    .season2-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .highlight-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .highlight-pill strong {
+      display: block;
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+
+    .highlight-pill span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
     .hero {
       display: grid;
       grid-template-columns: 1.4fr 1fr;
       gap: 2rem;
       align-items: center;
-      padding: 3.25rem 0 2rem;
+      padding: 2.25rem 0 2rem;
     }
 
     .hero-copy {
@@ -227,61 +326,6 @@
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
     }
 
-    .subscription-grid {
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-top: 2rem;
-    }
-
-    .subscription-card {
-      padding: 2rem;
-      border-radius: 32px;
-      background: linear-gradient(180deg, rgba(10, 20, 46, 0.96), rgba(6, 10, 19, 0.98));
-      border: 1px solid rgba(74, 225, 255, 0.18);
-      box-shadow: var(--shadow);
-    }
-
-    .subscription-card h3 {
-      margin-top: 0;
-      font-size: 1.4rem;
-    }
-
-    .subscription-card p {
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .perk-list {
-      list-style: none;
-      margin: 1.5rem 0 0;
-      padding: 0;
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .perk-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.9rem;
-      padding: 1rem 1.1rem;
-      border-radius: 20px;
-      background: rgba(74, 225, 255, 0.08);
-      border: 1px solid rgba(74, 225, 255, 0.16);
-      color: var(--text);
-    }
-
-    .perk-bullet {
-      width: 2rem;
-      height: 2rem;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(74, 225, 255, 0.22);
-      color: #060811;
-      font-weight: 700;
-    }
-
     .feature-card h3 {
       margin: 0 0 0.7rem;
       font-size: 1.05rem;
@@ -374,8 +418,6 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* Plushie display: show both plushies side-by-side (no carousel) */
-
     .music-card,
     .plush-card {
       border-radius: 32px;
@@ -386,7 +428,6 @@
     }
 
     .music-card img,
-    .music-card img,
     .plush-card img {
       width: 100%;
       height: 100%;
@@ -394,7 +435,6 @@
       aspect-ratio: 4 / 3;
     }
 
-    /* Make plushie images slightly smaller and contained */
     .plush-card img {
       max-height: 320px;
       width: auto;
@@ -498,7 +538,8 @@
       .hero,
       .bio-grid,
       .card-grid,
-      .feature-grid {
+      .feature-grid,
+      .season2-highlights {
         grid-template-columns: 1fr;
       }
 
@@ -538,7 +579,6 @@
       <a class="logo" href="#home">MysicPlus</a>
       <nav>
         <a href="#about">About</a>
-        <a href="#subscription">Subscription</a>
         <a href="#plushie">Plushie</a>
         <a href="#connect">Connect</a>
       </nav>
@@ -546,6 +586,35 @@
   </header>
 
   <main class="page-wrap" id="home">
+    <section class="season2-announcement">
+      <div class="season2-header-row">
+        <div class="season2-badge">✦ Season 2 Live Now</div>
+        <span style="font-size: 0.9rem; color: var(--text-muted);">The Neon Evolution</span>
+      </div>
+      <h2>Experience <span>MysicPlus Season 2</span></h2>
+      <p>A brand new era of sound production, plushie collectibles, and immersive electronic vibes has officially arrived. Dive into the fresh drops and join the new wave.</p>
+      
+      <div class="season2-highlights">
+        <div class="highlight-pill">
+          <strong>2 Tracks</strong>
+          <span>Released in S2</span>
+        </div>
+        <div class="highlight-pill">
+          <strong>1 Album</strong>
+          <span>Cinematic Collection</span>
+        </div>
+        <div class="highlight-pill">
+          <strong>Dual Plush</strong>
+          <span>Plus-hie & Inverted Drop</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="button" href="#latest-tracks">Explore Season 2 Tracks</a>
+        <a class="button-secondary" href="#plushie">Meet the Plushies</a>
+      </div>
+    </section>
+
     <section class="hero">
       <div class="hero-copy">
         <p class="overline">Producer | Creator | Plushie Universe</p>
@@ -589,8 +658,8 @@
           <h3>Sound design with a playful edge</h3>
           <p>MysicPlus is a music producer whose soundscape blends powerful club-ready beats with soft, inviting melodies. The brand is anchored by a plushie character that represents warmth, creativity, and modern sonic adventure.</p>
           <div class="stats">
-            <div class="stat"><strong>20</strong><span>Tracks released</span></div>
-            <div class="stat"><strong>4</strong><span>Albums released</span></div>
+            <div class="stat"><strong>2</strong><span>Tracks released in S2</span></div>
+            <div class="stat"><strong>1</strong><span>Albums released in S2</span></div>
             <div class="stat"><strong>100%</strong><span>Visual-first identity</span></div>
           </div>
         </article>
@@ -603,41 +672,16 @@
       </div>
     </section>
 
-    <section id="subscription">
-      <div class="section-heading"><h2>MysicPlus+</h2></div>
-      <div class="subscription-grid">
-        <article class="subscription-card">
-          <h3>Join the next level</h3>
-          <p>Unlock exclusive perks and become part of the MysicPlus+ circle. This rank is built for fans who want early music access, input on new ideas, and a deeper connection to the world of MysicPlus.</p>
-          <ul class="perk-list">
-            <li class="perk-item"><span class="perk-bullet">★</span><span>Early access to new songs before anyone else</span></li>
-            <li class="perk-item"><span class="perk-bullet">★</span><span>Send your song ideas in to me and help shape the next release</span></li>
-            <li class="perk-item"><span class="perk-bullet">★</span><span>Behind-the-scenes updates on upcoming tracks and plushie drops</span></li>
-            <li class="perk-item"><span class="perk-bullet">★</span><span>Exclusive MysicPlus+ bonus content and member-only announcements</span></li>
-          </ul>
-          <div class="hero-actions" style="margin-top:1.5rem;">
-            <a class="button" href="mailto:contactmysic@gmail.com">Apply For Plus</a>
-            <p>contactmysic@gmail.com</p>
-          </div>
-        </article>
-        <article class="subscription-card">
-          <h3>Why MysicPlus+</h3>
-          <p>Everything here is designed to reward the music lovers who want priority access and a voice in what comes next. Become an insider and feel the artist-fan connection in every new drop.</p>
-          <p>Whether you're here for the songs, the story, or the plushie world, MysicPlus+ is the place where fans experience next-level music releases first.</p>
-        </article>
-      </div>
-    </section>
-
     <section id="latest-tracks">
       <div class="section-heading"><h2>Latest tracks</h2></div>
       <div class="card-grid" style="grid-template-columns: 1fr;">
         <div class="music-card">
           <div class="card-body">
-            <h3>Fresh drops</h3>
+            <h3>Fresh drops (Season 2)</h3>
             <p>Listen to the newest MysicPlus releases and feel the neon energy with every track.</p>
             <ul class="track-list">
-              <li><span class="track-badge">1</span> <a href="https://suno.com/s/HZhW9uq8g1Gr0i4N" target="_blank" rel="noreferrer noopener">Boxeman</a></li>
-              <li><span class="track-badge">2</span> <a href="https://suno.com/s/17YZWGgZP40iFvtJ" target="_blank" rel="noreferrer noopener">Mooie Kaars</a></li>
+              <li><span class="track-badge">1</span> <a href="https://suno.com/s/mkEGTPloseBt0OHk" target="_blank" rel="noreferrer noopener">DA 4 Erbij</a></li>
+              <li><span class="track-badge">2</span> <a href="https://suno.com/s/Xl8yRbsdvRk7F46o" target="_blank" rel="noreferrer noopener">Kuttas</a></li>
             </ul>
           </div>
         </div>
@@ -697,6 +741,5 @@
   <footer class="page-wrap">
     <p>2026 MysicPlus. Crafted for immersive music and collectible vibes.</p>
   </footer>
-  
 </body>
 </html>
